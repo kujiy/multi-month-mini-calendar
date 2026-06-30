@@ -49,6 +49,9 @@ enum CalendarMath {
         switch startingMonth {
         case .currentMonth:
             return MonthIdentifier(year: year, month: comps.month ?? 1)
+        case .previousMonth:
+            let current = MonthIdentifier(year: year, month: comps.month ?? 1)
+            return shift(current, by: -1)
         case .january:
             return MonthIdentifier(year: year, month: 1)
         }

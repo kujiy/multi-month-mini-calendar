@@ -20,7 +20,7 @@ struct PopoverView: View {
 
     private var months: [MonthIdentifier] {
         CalendarMath.monthsToDisplay(
-            startingMonth: prefs.startingMonth,
+            startingMonth: prefs.effectiveStartingMonth,
             count: prefs.numberOfMonths.rawValue,
             offset: monthOffset,
             referenceDate: now,

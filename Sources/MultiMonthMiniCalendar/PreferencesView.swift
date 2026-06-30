@@ -35,11 +35,16 @@ struct PreferencesView: View {
             .disabled(prefs.layout != .grid)
             .help("Only applies when Layout is Grid.")
 
-            Picker("Starting Month", selection: $prefs.startingMonth) {
+            Picker("Starting Month", selection: Binding(
+                get: { prefs.effectiveStartingMonth },
+                set: { prefs.startingMonth = $0 }
+            )) {
                 ForEach(StartingMonth.allCases) { start in
                     Text(start.label).tag(start)
                 }
             }
+            .disabled(prefs.numberOfMonths == .one)
+            .help("In 1-month view the calendar always starts at the current month.")
 
             Picker("Week Start", selection: $prefs.weekStart) {
                 ForEach(WeekStart.allCases) { start in

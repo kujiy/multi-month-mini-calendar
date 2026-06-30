@@ -5,45 +5,51 @@ A tiny, blazing-fast, **read-only** calendar that lives in your macOS menu bar. 
 
 <table align="center">
   <tr>
-    <td align="center" valign="top" width="33%">
-      <img src="docs/screenshots/01-month-single.png" alt="1 month" width="240" height="235"><br>
-      <sub><strong>1 month</strong></sub>
-    </td>
-    <td align="center" valign="top" width="33%">
-      <img src="docs/screenshots/02-months-vertical.png" alt="2 months, vertical" width="240" height="235"><br>
-      <sub><strong>2 months · Vertical</strong></sub>
-    </td>
-    <td align="center" valign="top" width="33%">
-      <img src="docs/screenshots/02-months-horizontal.png" alt="2 months, horizontal" width="240" height="235"><br>
-      <sub><strong>2 months · Horizontal</strong></sub>
-    </td>
-  </tr>
-  <tr>
-    <td align="center" valign="top" width="33%">
-      <img src="docs/screenshots/03-months-vertical.png" alt="3 months, vertical" width="240" height="235"><br>
+    <td align="center" valign="top">
+      <img src="docs/screenshots/03-months-vertical.png" alt="3 months, vertical" width="117" height="287"><br>
       <sub><strong>3 months · Vertical</strong></sub>
     </td>
-    <td align="center" valign="top" width="33%">
-      <img src="docs/screenshots/03-months-horizontal.png" alt="3 months, horizontal" width="240" height="235"><br>
-      <sub><strong>3 months · Horizontal</strong></sub>
+    <td align="center" valign="top">
+      <img src="docs/screenshots/02-months-vertical.png" alt="2 months, vertical" width="171" height="287"><br>
+      <sub><strong>2 months · Vertical</strong></sub>
     </td>
-    <td align="center" valign="top" width="33%">
-      <img src="docs/screenshots/06-months-grid-2col.png" alt="6 months, grid 2 columns" width="240" height="235"><br>
+    <td align="center" valign="top">
+      <img src="docs/screenshots/06-months-grid-2col.png" alt="6 months, grid 2 columns" width="208" height="287"><br>
       <sub><strong>6 months · Grid (2 col)</strong></sub>
     </td>
-  </tr>
-  <tr>
-    <td align="center" valign="top" width="33%">
-      <img src="docs/screenshots/06-months-grid-3col.png" alt="6 months, grid 3 columns" width="240" height="235"><br>
-      <sub><strong>6 months · Grid (3 col)</strong></sub>
-    </td>
-    <td align="center" valign="top" width="33%">
-      <img src="docs/screenshots/12-months-grid-3col.png" alt="12 months, grid 3 columns" width="240" height="235"><br>
+    <td align="center" valign="top">
+      <img src="docs/screenshots/12-months-grid-3col.png" alt="12 months, grid 3 columns" width="222" height="287"><br>
       <sub><strong>12 months · Grid (3 col)</strong></sub>
     </td>
-    <td align="center" valign="top" width="33%">
-      <img src="docs/screenshots/12-months-grid-4col.png" alt="12 months, grid 4 columns" width="240" height="235"><br>
+  </tr>
+</table>
+
+<table align="center">
+  <tr>
+    <td align="center" valign="top">
+      <img src="docs/screenshots/01-month-single.png" alt="1 month" width="195" height="194"><br>
+      <sub><strong>1 month</strong></sub>
+    </td>
+    <td align="center" valign="top">
+      <img src="docs/screenshots/12-months-grid-4col.png" alt="12 months, grid 4 columns" width="246" height="194"><br>
       <sub><strong>12 months · Grid (4 col)</strong></sub>
+    </td>
+    <td align="center" valign="top">
+      <img src="docs/screenshots/06-months-grid-3col.png" alt="6 months, grid 3 columns" width="281" height="194"><br>
+      <sub><strong>6 months · Grid (3 col)</strong></sub>
+    </td>
+  </tr>
+</table>
+
+<table align="center">
+  <tr>
+    <td align="center" valign="top">
+      <img src="docs/screenshots/02-months-horizontal.png" alt="2 months, horizontal" width="309" height="173"><br>
+      <sub><strong>2 months · Horizontal</strong></sub>
+    </td>
+    <td align="center" valign="top">
+      <img src="docs/screenshots/03-months-horizontal.png" alt="3 months, horizontal" width="408" height="173"><br>
+      <sub><strong>3 months · Horizontal</strong></sub>
     </td>
   </tr>
 </table>
@@ -60,7 +66,7 @@ A tiny, blazing-fast, **read-only** calendar that lives in your macOS menu bar. 
 
 - 🗓 **Multi-month view** — show 1 / 2 / 3 / 6 / 12 months at once
 - 🧩 **Flexible layouts** — Vertical / Horizontal / Grid (1–4 columns)
-- 📍 **Starting month** — from the current month / from January every year (yearly calendar)
+- 📍 **Starting month** — from the current month / Last Month (keeps today in view with one month of look-back) / from January every year (yearly calendar)
 - ◀▶ **Month navigation** and **Today** to jump back to the current month
 - 🔴 Sundays in red, 🔵 Saturdays in blue, today highlighted with the accent color
 - 📅 Toggle between Monday / Sunday week start
@@ -119,14 +125,18 @@ swift run            # launch directly (menu-bar resident)
 
 ## Settings
 
+<p align="center">
+  <img src="docs/screenshots/preferences.png" alt="Preferences window" width="280">
+</p>
+
 | Setting | Default | Options |
 |---------|---------|---------|
-| Number of Months | 2 | 1 / 2 / 3 / 6 / 12 |
-| Layout | Vertical | Vertical / Horizontal / Grid |
-| Grid Columns | 1 | 1–4 (only effective with Grid) |
-| Starting Month | Current Month | Current Month / January |
-| Week Start | Sunday | Monday / Sunday |
-| Show Holidays | On | On / Off |
+| **Number of Months** | 2 | 1 / 2 / 3 / 6 / 12 |
+| **Layout** | Vertical | Vertical / Horizontal / Grid |
+| **Grid Columns** | 1 | 1–4 (only effective with Grid) |
+| **Starting Month** | Current Month | Current Month / Last Month / January (disabled in 1-month view, which always starts at the current month) |
+| **Week Start** | Sunday | Monday / Sunday |
+| **Show Holidays** | On | On / Off |
 
 The target country for holidays is **automatically detected from the macOS "Language & Region" settings** (there is no manual selection).
 The detected region is shown in the settings screen.

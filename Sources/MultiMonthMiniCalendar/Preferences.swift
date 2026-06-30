@@ -33,6 +33,7 @@ enum CalendarLayout: String, CaseIterable, Identifiable {
 /// Where the displayed range begins.
 enum StartingMonth: String, CaseIterable, Identifiable {
     case currentMonth
+    case previousMonth
     case january
 
     var id: String { rawValue }
@@ -40,6 +41,7 @@ enum StartingMonth: String, CaseIterable, Identifiable {
     var label: String {
         switch self {
         case .currentMonth: return "Current Month"
+        case .previousMonth: return "Last Month"
         case .january: return "January"
         }
     }
@@ -141,6 +143,15 @@ final class Preferences: ObservableObject {
         self.weekStart = weekRaw.flatMap(WeekStart.init(rawValue:)) ?? .sunday
 
         self.showHolidays = defaults.object(forKey: Key.showHolidays) as? Bool ?? true
+    }
+
+    /// The starting month actually used for display. In 1-month view the
+    /// calendar always anchors on the current month — "Last Month" and
+    /// "January" would each show a single non-current month, which is rarely
+    /// what's wanted — so those choices are ignored (and disabled in the UI)
+    /// while the user's stored preference is preserved for multi-month views.
+    var effectiveStartingMonth: StartingMonth {
+        numberOfMonths == .one ? .currentMonth : startingMonth
     }
 
     /// Effective number of columns used to lay out the month tiles, derived

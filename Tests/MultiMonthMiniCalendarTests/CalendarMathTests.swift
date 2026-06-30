@@ -52,6 +52,24 @@ final class CalendarMathTests: XCTestCase {
         XCTAssertEqual(base, MonthIdentifier(year: 2026, month: 1))
     }
 
+    func testBaseMonthPrevious() {
+        let base = CalendarMath.baseMonth(
+            startingMonth: .previousMonth,
+            referenceDate: date(2026, 6, 30),
+            calendar: utcCalendar
+        )
+        XCTAssertEqual(base, MonthIdentifier(year: 2026, month: 5))
+    }
+
+    func testBaseMonthPreviousWrapsAcrossYear() {
+        let base = CalendarMath.baseMonth(
+            startingMonth: .previousMonth,
+            referenceDate: date(2026, 1, 15),
+            calendar: utcCalendar
+        )
+        XCTAssertEqual(base, MonthIdentifier(year: 2025, month: 12))
+    }
+
     // MARK: months to display
 
     func testMonthsToDisplayDefault() {
@@ -79,6 +97,22 @@ final class CalendarMathTests: XCTestCase {
         XCTAssertEqual(months, [
             MonthIdentifier(year: 2027, month: 1),
             MonthIdentifier(year: 2027, month: 2)
+        ])
+    }
+
+    func testThreeMonthsIncludingLastMonth() {
+        // "Last Month": prev, current, next — today's month always 2nd.
+        let months = CalendarMath.monthsToDisplay(
+            startingMonth: .previousMonth,
+            count: 3,
+            offset: 0,
+            referenceDate: date(2026, 6, 30),
+            calendar: utcCalendar
+        )
+        XCTAssertEqual(months, [
+            MonthIdentifier(year: 2026, month: 5),
+            MonthIdentifier(year: 2026, month: 6),
+            MonthIdentifier(year: 2026, month: 7)
         ])
     }
 
