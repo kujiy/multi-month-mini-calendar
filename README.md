@@ -30,6 +30,13 @@ If so, clear the quarantine flag once:
 ```bash
 xattr -dr com.apple.quarantine "/Applications/Multi-Month Mini Calendar.app"
 ```
+
+To upgrade to the latest version (Homebrew caches the tap locally, so run `brew update` first):
+
+```bash
+brew update
+brew upgrade --cask kujiy/tap/multi-month-mini-calendar
+```
 <hr />
 
 <table align="center">
