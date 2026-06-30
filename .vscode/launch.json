@@ -1,0 +1,24 @@
+{
+  "configurations": [
+    {
+      "type": "swift",
+      "request": "launch",
+      "args": [],
+      "cwd": "${workspaceFolder:mini-calendar-dual}",
+      "name": "Debug MultiMonthMiniCalendar",
+      "target": "MultiMonthMiniCalendar",
+      "configuration": "debug",
+      "preLaunchTask": "swift: Build Debug MultiMonthMiniCalendar"
+    },
+    {
+      "type": "swift",
+      "request": "launch",
+      "args": [],
+      "cwd": "${workspaceFolder:mini-calendar-dual}",
+      "name": "Release MultiMonthMiniCalendar",
+      "target": "MultiMonthMiniCalendar",
+      "configuration": "release",
+      "preLaunchTask": "swift: Build Release MultiMonthMiniCalendar"
+    }
+  ]
+}

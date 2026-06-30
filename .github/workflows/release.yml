@@ -1,0 +1,29 @@
+name: Release
+
+# Builds the .app, zips it, and attaches it to a GitHub Release
+# whenever a version tag (v*) is pushed.
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write # required to create the release and upload assets
+
+jobs:
+  release:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Show Swift version
+        run: swift --version
+
+      - name: Build .app bundle and zip
+        run: ./build-app.sh
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: build/Multi-Month-Mini-Calendar.zip
+          generate_release_notes: true

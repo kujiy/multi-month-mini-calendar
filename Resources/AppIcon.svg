@@ -1,0 +1,83 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Squircle background gradient -->
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#e9eef5"/>
+    </linearGradient>
+    <!-- Header gradient (red, like Apple Calendar) -->
+    <linearGradient id="header" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff5b54"/>
+      <stop offset="1" stop-color="#f23a39"/>
+    </linearGradient>
+    <!-- Today accent -->
+    <linearGradient id="today" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2f9bff"/>
+      <stop offset="1" stop-color="#0a6efd"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="22" flood-color="#1b2a44" flood-opacity="0.22"/>
+    </filter>
+    <filter id="squircleShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="28" flood-color="#0a1730" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+
+  <!-- macOS squircle base -->
+  <rect x="100" y="100" width="824" height="824" rx="185" ry="185" fill="url(#bg)" filter="url(#squircleShadow)"/>
+
+  <!-- Back page (offset, signals multi-month) -->
+  <g transform="translate(58,-44) rotate(7 512 512)">
+    <rect x="300" y="250" width="424" height="470" rx="56" ry="56" fill="#ffffff" opacity="0.55"/>
+  </g>
+  <g transform="translate(34,-26) rotate(3.5 512 512)">
+    <rect x="300" y="250" width="424" height="470" rx="56" ry="56" fill="#ffffff" opacity="0.8"/>
+  </g>
+
+  <!-- Front calendar page -->
+  <g filter="url(#cardShadow)">
+    <rect x="280" y="262" width="464" height="500" rx="60" ry="60" fill="#ffffff"/>
+  </g>
+  <!-- Header band -->
+  <path d="M280 322 a60 60 0 0 1 60 -60 h344 a60 60 0 0 1 60 60 v74 h-464 z" fill="url(#header)"/>
+  <!-- Binding rings -->
+  <rect x="372" y="232" width="26" height="74" rx="13" fill="#c9d2de"/>
+  <rect x="626" y="232" width="26" height="74" rx="13" fill="#c9d2de"/>
+
+  <!-- Day grid: 7 columns x 4 rows of dots; col0 (Sun) red, col6 (Sat) blue, one "today" accent -->
+  <g>
+    <!-- row 1 -->
+    <circle cx="350" cy="470" r="22" fill="#f23a39"/>
+    <circle cx="404" cy="470" r="22" fill="#cfd6e0"/>
+    <circle cx="458" cy="470" r="22" fill="#cfd6e0"/>
+    <circle cx="512" cy="470" r="22" fill="#cfd6e0"/>
+    <circle cx="566" cy="470" r="22" fill="#cfd6e0"/>
+    <circle cx="620" cy="470" r="22" fill="#cfd6e0"/>
+    <circle cx="674" cy="470" r="22" fill="#3b82f6"/>
+    <!-- row 2 -->
+    <circle cx="350" cy="546" r="22" fill="#f23a39"/>
+    <circle cx="404" cy="546" r="22" fill="#cfd6e0"/>
+    <circle cx="458" cy="546" r="22" fill="#cfd6e0"/>
+    <!-- today highlight -->
+    <circle cx="512" cy="546" r="30" fill="url(#today)"/>
+    <circle cx="566" cy="546" r="22" fill="#cfd6e0"/>
+    <circle cx="620" cy="546" r="22" fill="#cfd6e0"/>
+    <circle cx="674" cy="546" r="22" fill="#3b82f6"/>
+    <!-- row 3 -->
+    <circle cx="350" cy="622" r="22" fill="#f23a39"/>
+    <circle cx="404" cy="622" r="22" fill="#cfd6e0"/>
+    <circle cx="458" cy="622" r="22" fill="#cfd6e0"/>
+    <circle cx="512" cy="622" r="22" fill="#cfd6e0"/>
+    <circle cx="566" cy="622" r="22" fill="#cfd6e0"/>
+    <circle cx="620" cy="622" r="22" fill="#cfd6e0"/>
+    <circle cx="674" cy="622" r="22" fill="#3b82f6"/>
+    <!-- row 4 -->
+    <circle cx="350" cy="698" r="22" fill="#f23a39"/>
+    <circle cx="404" cy="698" r="22" fill="#cfd6e0"/>
+    <circle cx="458" cy="698" r="22" fill="#cfd6e0"/>
+    <circle cx="512" cy="698" r="22" fill="#cfd6e0"/>
+    <circle cx="566" cy="698" r="22" fill="#cfd6e0"/>
+    <circle cx="620" cy="698" r="22" fill="#cfd6e0"/>
+    <circle cx="674" cy="698" r="22" fill="#3b82f6"/>
+  </g>
+</svg>
