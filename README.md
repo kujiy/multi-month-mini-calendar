@@ -3,6 +3,35 @@
 **See as many months as you want, laid out however you like — in an app so light you'll forget it's running.**
 A tiny, blazing-fast, **read-only** calendar that lives in your macOS menu bar. No schedule management, no clutter — just dates.
 
+
+## ⬇️ Install (Download)
+
+
+1. 📦 Download `Multi-Month-Mini-Calendar.zip` from the [latest release](https://github.com/kujiy/multi-month-mini-calendar/releases/latest).
+2. 🗂️ Unzip it and move **Multi-Month Mini Calendar.app** to `/Applications`.
+3. 🔓 The app is ad-hoc signed (not notarized), so macOS Gatekeeper blocks it on first launch. Open it once with either method:
+   - 🖱️ **Right-click the app → Open → Open**, or
+   - ⌨️ run this in Terminal to clear the quarantine flag:
+     ```bash
+     xattr -dr com.apple.quarantine "/Applications/Multi-Month Mini Calendar.app"
+     ```
+
+✅ After the first launch it opens normally by double-clicking.
+
+## 🍺 Install (Homebrew)
+
+```bash
+brew install --cask kujiy/tap/multi-month-mini-calendar
+```
+
+The app is ad-hoc signed (not notarized), so on first launch macOS Gatekeeper may block it.
+If so, clear the quarantine flag once:
+
+```bash
+xattr -dr com.apple.quarantine "/Applications/Multi-Month Mini Calendar.app"
+```
+<hr />
+
 <table align="center">
   <tr>
     <td align="center" valign="top">
@@ -94,6 +123,8 @@ A tiny, blazing-fast, **read-only** calendar that lives in your macOS menu bar. 
   </tr>
 </table>
 
+<hr />
+
 ## Why you'll like it
 
 - 📆 **See multiple months at once** — 1, 2, 3, 6, or 12 months in a single click. Plan a quarter or eyeball the whole year without scrolling.
@@ -109,37 +140,12 @@ A tiny, blazing-fast, **read-only** calendar that lives in your macOS menu bar. 
 - 🔴 Sundays in red, 🔵 Saturdays in blue, today highlighted with the accent color
 - 📅 Toggle between Monday / Sunday week start
 - 🎌 **Holiday display** — automatically detects the target country from macOS region settings and shows holidays in red (offline, 150+ countries)
+- 🩶 **Adjacent month days** — fill the blanks before the 1st and after the last day with the previous/next month's dates, shown faintly (toggle on/off)
 - 🚫 No Dock icon, no network, no permission requests, read-only (clicking a date does nothing)
 
 ## Requirements
 
 - macOS 15 or later (Apple Silicon / Intel)
-
-## Install (Homebrew)
-
-```bash
-brew install --cask kujiy/tap/multi-month-mini-calendar
-```
-
-The app is ad-hoc signed (not notarized), so on first launch macOS Gatekeeper may block it.
-If so, clear the quarantine flag once:
-
-```bash
-xattr -dr com.apple.quarantine "/Applications/Multi-Month Mini Calendar.app"
-```
-
-## Install (download)
-
-1. Download `Multi-Month-Mini-Calendar.zip` from the [latest release](https://github.com/kujiy/multi-month-mini-calendar/releases/latest).
-2. Unzip it and move **Multi-Month Mini Calendar.app** to `/Applications`.
-3. The app is ad-hoc signed (not notarized), so macOS Gatekeeper blocks it on first launch. Open it once with either method:
-   - **Right-click the app → Open → Open**, or
-   - run this in Terminal to clear the quarantine flag:
-     ```bash
-     xattr -dr com.apple.quarantine "/Applications/Multi-Month Mini Calendar.app"
-     ```
-
-After the first launch it opens normally by double-clicking.
 
 ## Build and Run
 
