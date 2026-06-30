@@ -27,3 +27,40 @@ jobs:
         with:
           files: build/Multi-Month-Mini-Calendar.zip
           generate_release_notes: true
+
+  bump-cask:
+    needs: release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the Homebrew tap
+        uses: actions/checkout@v4
+        with:
+          repository: kujiy/homebrew-tap
+          token: ${{ secrets.HOMEBREW_TAP_TOKEN }}
+
+      - name: Update cask version and sha256
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          VERSION="${TAG#v}"
+          URL="https://github.com/${{ github.repository }}/releases/download/${TAG}/Multi-Month-Mini-Calendar.zip"
+          curl -fsSL -o app.zip "$URL"
+          SHA="$(sha256sum app.zip | cut -d' ' -f1)"
+          CASK="Casks/multi-month-mini-calendar.rb"
+          sed -i -E "s/^  version \".*\"/  version \"${VERSION}\"/" "$CASK"
+          sed -i -E "s/^  sha256 \".*\"/  sha256 \"${SHA}\"/" "$CASK"
+          rm -f app.zip
+          echo "Updated $CASK to ${VERSION} (${SHA})"
+
+      - name: Commit and push
+        run: |
+          set -euo pipefail
+          git config user.name kujiy
+          git config user.email kujiy.fs@gmail.com
+          if git diff --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -am "Update multi-month-mini-calendar to ${GITHUB_REF_NAME#v}"
+          git push

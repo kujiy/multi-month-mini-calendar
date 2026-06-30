@@ -18,6 +18,19 @@ It does no schedule management at all — it is focused solely on "seeing dates"
 
 - macOS 15 or later (Apple Silicon / Intel)
 
+## Install (Homebrew)
+
+```bash
+brew install --cask kujiy/tap/multi-month-mini-calendar
+```
+
+The app is ad-hoc signed (not notarized), so on first launch macOS Gatekeeper may block it.
+If so, clear the quarantine flag once:
+
+```bash
+xattr -dr com.apple.quarantine "/Applications/Multi-Month Mini Calendar.app"
+```
+
 ## Install (download)
 
 1. Download `Multi-Month-Mini-Calendar.zip` from the [latest release](https://github.com/kujiy/multi-month-mini-calendar/releases/latest).
