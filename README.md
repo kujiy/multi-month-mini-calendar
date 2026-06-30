@@ -182,11 +182,12 @@ swift run            # launch directly (menu-bar resident)
 | **Week Start** | Sunday | Monday / Sunday |
 | **Show Holidays** | On | On / Off |
 | **Show Adjacent Month Days** | On | On / Off — fill the blanks before the 1st and after the last day with the previous/next month's dates, shown faintly |
+| **Launch at Login** | Off | On / Off — automatically start the app when you log in to your Mac |
 
 The target country for holidays is **automatically detected from the macOS "Language & Region" settings** (there is no manual selection).
 The detected region is shown in the settings screen.
 
-Settings are saved to `UserDefaults` and restored on the next launch.
+Settings are saved to `UserDefaults` and restored on the next launch. Launch at Login is managed by macOS (`SMAppService`) and can also be toggled from System Settings → General → Login Items.
 
 ## Structure
 

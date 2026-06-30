@@ -1,5 +1,7 @@
 import SwiftUI
 import Combine
+import ServiceManagement
+import OSLog
 
 /// How many months are displayed at once.
 enum MonthCount: Int, CaseIterable, Identifiable {
@@ -130,6 +132,35 @@ final class Preferences: ObservableObject {
         didSet { defaults.set(showAdjacentMonthDays, forKey: Key.showAdjacentMonthDays) }
     }
 
+    /// Whether the app launches automatically when the user logs in.
+    ///
+    /// Unlike the other preferences, the source of truth is the system login-item
+    /// registry (`SMAppService`), not `UserDefaults`: macOS owns this state and the
+    /// user can change it from System Settings. The `didSet` registers/unregisters
+    /// the main app accordingly, reverting the published value if the system call
+    /// fails (e.g. when running unbundled via `swift run`).
+    @Published var launchAtLogin: Bool {
+        didSet {
+            guard launchAtLogin != oldValue else { return }
+            let service = SMAppService.mainApp
+            do {
+                if launchAtLogin {
+                    try service.register()
+                } else {
+                    try service.unregister()
+                }
+            } catch {
+                Self.log.error("Failed to update launch-at-login: \(error.localizedDescription, privacy: .public)")
+                launchAtLogin = oldValue
+            }
+        }
+    }
+
+    private static let log = Logger(
+        subsystem: Bundle.main.bundleIdentifier ?? "MultiMonthMiniCalendar",
+        category: "Preferences"
+    )
+
     init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
 
@@ -151,6 +182,9 @@ final class Preferences: ObservableObject {
         self.showHolidays = defaults.object(forKey: Key.showHolidays) as? Bool ?? true
 
         self.showAdjacentMonthDays = defaults.object(forKey: Key.showAdjacentMonthDays) as? Bool ?? true
+
+        // Reflect the current system login-item state rather than a stored value.
+        self.launchAtLogin = SMAppService.mainApp.status == .enabled
     }
 
     /// The starting month actually used for display. In 1-month view the
