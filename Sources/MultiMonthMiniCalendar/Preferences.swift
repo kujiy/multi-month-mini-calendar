@@ -128,7 +128,7 @@ final class Preferences: ObservableObject {
         self.defaults = defaults
 
         let monthsRaw = defaults.object(forKey: Key.numberOfMonths) as? Int
-        self.numberOfMonths = monthsRaw.flatMap(MonthCount.init(rawValue:)) ?? .two
+        self.numberOfMonths = monthsRaw.flatMap(MonthCount.init(rawValue:)) ?? .three
 
         let layoutRaw = defaults.string(forKey: Key.layout)
         self.layout = layoutRaw.flatMap(CalendarLayout.init(rawValue:)) ?? .vertical
@@ -137,7 +137,7 @@ final class Preferences: ObservableObject {
         self.gridColumns = min(4, max(1, columns))
 
         let startRaw = defaults.string(forKey: Key.startingMonth)
-        self.startingMonth = startRaw.flatMap(StartingMonth.init(rawValue:)) ?? .currentMonth
+        self.startingMonth = startRaw.flatMap(StartingMonth.init(rawValue:)) ?? .previousMonth
 
         let weekRaw = defaults.string(forKey: Key.weekStart)
         self.weekStart = weekRaw.flatMap(WeekStart.init(rawValue:)) ?? .sunday
