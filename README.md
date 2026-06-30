@@ -1,12 +1,65 @@
 # Multi-Month Mini Calendar
 
-A lightweight, fast **read-only** calendar that lets you view multiple months at once from the macOS menu bar.
-It does no schedule management at all — it is focused solely on "seeing dates".
+**See as many months as you want, laid out however you like — in an app so light you'll forget it's running.**
+A tiny, blazing-fast, **read-only** calendar that lives in your macOS menu bar. No schedule management, no clutter — just dates.
+
+<table align="center">
+  <tr>
+    <td align="center" valign="top" width="33%">
+      <img src="docs/screenshots/01-month-single.png" alt="1 month" width="240" height="235"><br>
+      <sub><strong>1 month</strong></sub>
+    </td>
+    <td align="center" valign="top" width="33%">
+      <img src="docs/screenshots/02-months-vertical.png" alt="2 months, vertical" width="240" height="235"><br>
+      <sub><strong>2 months · Vertical</strong></sub>
+    </td>
+    <td align="center" valign="top" width="33%">
+      <img src="docs/screenshots/02-months-horizontal.png" alt="2 months, horizontal" width="240" height="235"><br>
+      <sub><strong>2 months · Horizontal</strong></sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" valign="top" width="33%">
+      <img src="docs/screenshots/03-months-vertical.png" alt="3 months, vertical" width="240" height="235"><br>
+      <sub><strong>3 months · Vertical</strong></sub>
+    </td>
+    <td align="center" valign="top" width="33%">
+      <img src="docs/screenshots/03-months-horizontal.png" alt="3 months, horizontal" width="240" height="235"><br>
+      <sub><strong>3 months · Horizontal</strong></sub>
+    </td>
+    <td align="center" valign="top" width="33%">
+      <img src="docs/screenshots/06-months-grid-2col.png" alt="6 months, grid 2 columns" width="240" height="235"><br>
+      <sub><strong>6 months · Grid (2 col)</strong></sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" valign="top" width="33%">
+      <img src="docs/screenshots/06-months-grid-3col.png" alt="6 months, grid 3 columns" width="240" height="235"><br>
+      <sub><strong>6 months · Grid (3 col)</strong></sub>
+    </td>
+    <td align="center" valign="top" width="33%">
+      <img src="docs/screenshots/12-months-grid-3col.png" alt="12 months, grid 3 columns" width="240" height="235"><br>
+      <sub><strong>12 months · Grid (3 col)</strong></sub>
+    </td>
+    <td align="center" valign="top" width="33%">
+      <img src="docs/screenshots/12-months-grid-4col.png" alt="12 months, grid 4 columns" width="240" height="235"><br>
+      <sub><strong>12 months · Grid (4 col)</strong></sub>
+    </td>
+  </tr>
+</table>
+
+<p align="center"><em>Nine ready-made layouts — pick the one that fits your screen and your week. 🗓</em></p>
+
+## Why you'll like it
+
+- 📆 **See multiple months at once** — 1, 2, 3, 6, or 12 months in a single click. Plan a quarter or eyeball the whole year without scrolling.
+- 🧩 **Flexible layouts** — vertical, horizontal, or grid (1–4 columns). The nine combinations above are all built in, so the calendar fits *your* screen instead of the other way around.
+- 🪶 **Insanely lightweight** — no Dock icon, no network, no permission prompts, pure read-only. It sits quietly in the menu bar, opens instantly, and stays out of your way.
 
 ## Features
 
 - 🗓 **Multi-month view** — show 1 / 2 / 3 / 6 / 12 months at once
-- 🧩 **Layout** — Vertical / Horizontal / Grid (1–4 columns)
+- 🧩 **Flexible layouts** — Vertical / Horizontal / Grid (1–4 columns)
 - 📍 **Starting month** — from the current month / from January every year (yearly calendar)
 - ◀▶ **Month navigation** and **Today** to jump back to the current month
 - 🔴 Sundays in red, 🔵 Saturdays in blue, today highlighted with the accent color
