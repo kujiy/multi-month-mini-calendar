@@ -56,6 +56,27 @@ A tiny, blazing-fast, **read-only** calendar that lives in your macOS menu bar. 
 
 <p align="center"><em>Nine ready-made layouts — pick the one that fits your screen and your week. 🗓</em></p>
 
+<h3 align="center">👀 …and peek at last month, too</h3>
+
+<p align="center"><strong>Last Month</strong> mode starts the view one month early, so the month you just wrapped up stays in sight right above today — perfect for a quick look back.</p>
+
+<table align="center">
+  <tr>
+    <td align="center" valign="top">
+      <img src="docs/screenshots/03-months-vertical-last-month.png" alt="Last Month mode, 3 months vertical" width="110" height="314"><br>
+      <sub><strong>3 months · Vertical</strong></sub>
+    </td>
+    <td align="center" valign="top">
+      <img src="docs/screenshots/06-months-grid-3col-last-month.png" alt="Last Month mode, 6 months grid 3 columns" width="260" height="189"><br>
+      <sub><strong>6 months · Grid (3 col)</strong></sub>
+    </td>
+    <td align="center" valign="top">
+      <img src="docs/screenshots/03-months-horizontal-last-month.png" alt="Last Month mode, 3 months horizontal" width="300" height="127"><br>
+      <sub><strong>3 months · Horizontal</strong></sub>
+    </td>
+  </tr>
+</table>
+
 ## Why you'll like it
 
 - 📆 **See multiple months at once** — 1, 2, 3, 6, or 12 months in a single click. Plan a quarter or eyeball the whole year without scrolling.
