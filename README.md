@@ -77,6 +77,23 @@ A tiny, blazing-fast, **read-only** calendar that lives in your macOS menu bar. 
   </tr>
 </table>
 
+<h3 align="center">🩶 Fill the blanks — <em>Show Adjacent Month Days</em></h3>
+
+<p align="center">Flip one toggle to fill the empty cells before the 1st and after the last day with the neighboring month's dates in a faint gray — so every week row stays complete. Or turn it off for a clean, uncluttered grid.</p>
+
+<table align="center">
+  <tr>
+    <td align="center" valign="top">
+      <img src="docs/screenshots/adjacent-days-on.png" alt="Show Adjacent Month Days turned on" width="160" height="287"><br>
+      <sub><strong>On</strong> · blanks filled faintly</sub>
+    </td>
+    <td align="center" valign="top">
+      <img src="docs/screenshots/adjacent-days-off.png" alt="Show Adjacent Month Days turned off" width="160" height="287"><br>
+      <sub><strong>Off</strong> · clean blanks</sub>
+    </td>
+  </tr>
+</table>
+
 ## Why you'll like it
 
 - 📆 **See multiple months at once** — 1, 2, 3, 6, or 12 months in a single click. Plan a quarter or eyeball the whole year without scrolling.
