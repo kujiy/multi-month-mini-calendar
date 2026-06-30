@@ -83,6 +83,7 @@ final class Preferences: ObservableObject {
         static let startingMonth = "startingMonth"
         static let weekStart = "weekStart"
         static let showHolidays = "showHolidays"
+        static let showAdjacentMonthDays = "showAdjacentMonthDays"
     }
 
     /// Shared instance used by both the menu-bar popover and the Settings
@@ -124,6 +125,11 @@ final class Preferences: ObservableObject {
         didSet { defaults.set(showHolidays, forKey: Key.showHolidays) }
     }
 
+    /// Whether the leading/trailing blanks show the adjacent month's days faintly.
+    @Published var showAdjacentMonthDays: Bool {
+        didSet { defaults.set(showAdjacentMonthDays, forKey: Key.showAdjacentMonthDays) }
+    }
+
     init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
 
@@ -143,6 +149,8 @@ final class Preferences: ObservableObject {
         self.weekStart = weekRaw.flatMap(WeekStart.init(rawValue:)) ?? .sunday
 
         self.showHolidays = defaults.object(forKey: Key.showHolidays) as? Bool ?? true
+
+        self.showAdjacentMonthDays = defaults.object(forKey: Key.showAdjacentMonthDays) as? Bool ?? true
     }
 
     /// The starting month actually used for display. In 1-month view the

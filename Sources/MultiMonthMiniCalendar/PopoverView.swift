@@ -67,7 +67,8 @@ struct PopoverView: View {
                                 month: month,
                                 calendar: calendar,
                                 referenceDate: now,
-                                holidayDays: holidayDays(for: month)
+                                holidayDays: holidayDays(for: month),
+                                showAdjacentMonthDays: prefs.showAdjacentMonthDays
                             )
                         }
                     }

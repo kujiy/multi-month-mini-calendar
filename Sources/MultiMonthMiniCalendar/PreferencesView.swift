@@ -55,6 +55,9 @@ struct PreferencesView: View {
 
             Toggle("Show Holidays", isOn: $prefs.showHolidays)
 
+            Toggle("Show Adjacent Month Days", isOn: $prefs.showAdjacentMonthDays)
+                .help("Fill the blanks before the 1st and after the last day with the previous/next month's dates, shown faintly.")
+
             LabeledContent("Region", value: regionLabel)
                 .help("Detected automatically from your macOS Language & Region settings.")
 

@@ -33,6 +33,8 @@ struct MonthView: View {
     let referenceDate: Date
     /// Days of this month that are public holidays (empty when disabled).
     var holidayDays: Set<Int> = []
+    /// Whether to fill leading/trailing blanks with adjacent months' days.
+    var showAdjacentMonthDays: Bool = true
 
     private var title: String {
         CalendarMath.monthTitle(month, calendar: calendar)
@@ -47,7 +49,8 @@ struct MonthView: View {
             for: month,
             referenceDate: referenceDate,
             calendar: calendar,
-            holidayDays: holidayDays
+            holidayDays: holidayDays,
+            showAdjacentDays: showAdjacentMonthDays
         )
     }
 
@@ -96,6 +99,11 @@ private struct DayCellView: View {
                 Text("\(day)")
                     .font(CalendarStyle.dayFont)
                     .foregroundStyle(textColor)
+            } else if let adjacentDay = cell.adjacentDay {
+                // Previous/next month spill-over, shown faintly.
+                Text("\(adjacentDay)")
+                    .font(CalendarStyle.dayFont)
+                    .foregroundStyle(CalendarStyle.color(forWeekday: cell.weekday).opacity(0.3))
             }
         }
         .frame(width: CalendarStyle.cellWidth, height: CalendarStyle.cellHeight)

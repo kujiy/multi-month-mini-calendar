@@ -152,12 +152,13 @@ swift run            # launch directly (menu-bar resident)
 
 | Setting | Default | Options |
 |---------|---------|---------|
-| **Number of Months** | 2 | 1 / 2 / 3 / 6 / 12 |
+| **Number of Months** | 3 | 1 / 2 / 3 / 6 / 12 |
 | **Layout** | Vertical | Vertical / Horizontal / Grid |
 | **Grid Columns** | 1 | 1–4 (only effective with Grid) |
-| **Starting Month** | Current Month | Current Month / Last Month / January (disabled in 1-month view, which always starts at the current month) |
+| **Starting Month** | Last Month | Current Month / Last Month / January (disabled in 1-month view, which always starts at the current month) |
 | **Week Start** | Sunday | Monday / Sunday |
 | **Show Holidays** | On | On / Off |
+| **Show Adjacent Month Days** | On | On / Off — fill the blanks before the 1st and after the last day with the previous/next month's dates, shown faintly |
 
 The target country for holidays is **automatically detected from the macOS "Language & Region" settings** (there is no manual selection).
 The detected region is shown in the settings screen.

@@ -6,13 +6,17 @@ struct MonthIdentifier: Equatable, Hashable {
     var month: Int // 1...12
 }
 
-/// One day cell in a month grid. `day == nil` marks padding for days that
-/// belong to an adjacent month and are rendered as blanks.
+/// One day cell in a month grid. `day == nil` marks a cell that belongs to an
+/// adjacent month; such cells carry the spill-over day number in `adjacentDay`
+/// and are rendered faintly.
 struct DayCell: Equatable {
-    /// Day of month, or `nil` for leading/trailing padding.
+    /// Day of month for the cell's own month, or `nil` for adjacent-month cells.
     var day: Int?
+    /// For adjacent-month cells (`day == nil`), the day number of the previous
+    /// or next month shown faintly in the leading/trailing slots. `nil` for
+    /// cells that belong to this month.
+    var adjacentDay: Int?
     /// Weekday: 1 = Sunday ... 7 = Saturday (matches `Calendar` component).
-    /// `nil` for padding cells.
     var weekday: Int?
     /// True when this cell is "today".
     var isToday: Bool
@@ -134,7 +138,8 @@ enum CalendarMath {
         for month: MonthIdentifier,
         referenceDate: Date,
         calendar: Calendar,
-        holidayDays: Set<Int> = []
+        holidayDays: Set<Int> = [],
+        showAdjacentDays: Bool = true
     ) -> [[DayCell]] {
         var comps = DateComponents()
         comps.year = month.year
@@ -157,8 +162,21 @@ enum CalendarMath {
         var cells: [DayCell] = []
         cells.reserveCapacity(leadingBlanks + daysInMonth)
 
-        for _ in 0..<leadingBlanks {
-            cells.append(DayCell(day: nil, weekday: nil, isToday: false))
+        // Leading slots: fill with the previous month's trailing days, or leave
+        // blank when adjacent-day display is disabled.
+        if leadingBlanks > 0 {
+            let prev = shift(month, by: -1)
+            let daysInPrev = daysIn(prev, calendar: calendar)
+            let startDay = daysInPrev - leadingBlanks + 1
+            for index in 0..<leadingBlanks {
+                let weekday = weekday(forColumn: index, calendar: calendar)
+                cells.append(DayCell(
+                    day: nil,
+                    adjacentDay: showAdjacentDays ? startDay + index : nil,
+                    weekday: weekday,
+                    isToday: false
+                ))
+            }
         }
 
         for day in 1...daysInMonth {
@@ -175,14 +193,39 @@ enum CalendarMath {
             ))
         }
 
-        // Pad trailing to complete the final row.
+        // Trailing slots: fill with the next month's leading days, or leave
+        // blank when adjacent-day display is disabled.
+        var nextDay = 1
         while cells.count % 7 != 0 {
-            cells.append(DayCell(day: nil, weekday: nil, isToday: false))
+            let column = cells.count % 7
+            let weekday = weekday(forColumn: column, calendar: calendar)
+            cells.append(DayCell(
+                day: nil,
+                adjacentDay: showAdjacentDays ? nextDay : nil,
+                weekday: weekday,
+                isToday: false
+            ))
+            nextDay += 1
         }
 
         // Chunk into rows of 7.
         return stride(from: 0, to: cells.count, by: 7).map {
             Array(cells[$0..<min($0 + 7, cells.count)])
         }
+    }
+
+    /// Number of days in the given month.
+    private static func daysIn(_ month: MonthIdentifier, calendar: Calendar) -> Int {
+        var comps = DateComponents()
+        comps.year = month.year
+        comps.month = month.month
+        comps.day = 1
+        guard
+            let firstOfMonth = calendar.date(from: comps),
+            let range = calendar.range(of: .day, in: .month, for: firstOfMonth)
+        else {
+            return 30
+        }
+        return range.count
     }
 }
